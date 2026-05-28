@@ -16,10 +16,11 @@ type BlockchainMsg =
 
 /**
  * Orchestrates all background loops:
- *  - Resilience smoothing (requestAnimationFrame)
- *  - YOLO frames via WebSocket /ws/yolo (fallback: client-side rotation)
- *  - Blockchain transactions via WebSocket /ws/blockchain (fallback: auto-gen)
- *  - Federation burst transaction storm (local trigger always)
+ * - Resilience smoothing (requestAnimationFrame)
+ * - YOLO frames via WebSocket /ws/yolo (fallback: client-side rotation)
+ * - Blockchain transactions via WebSocket /ws/blockchain (fallback: auto-gen)
+ * - Climate state via WebSocket /ws/climate (ESP32 connection)
+ * - Federation burst transaction storm (local trigger always)
  *
  * Strategy: if NEXT_PUBLIC_USE_BACKEND=true, try WS. If WS errors out
  * on first attempt, fall back to client-side simulation.
@@ -50,6 +51,20 @@ export function Providers({ children }: { children: React.ReactNode }) {
   // ── Track whether WS is working; if it errors, switch to simulation ──
   const [yoloWsFailed, setYoloWsFailed] = useState(false);
   const [blockchainWsFailed, setBlockchainWsFailed] = useState(false);
+  const [climateWsFailed, setClimateWsFailed] = useState(false); // 👈 ADICIONADO: Estado do clima
+
+  // ── Climate via WebSocket (ESP32) ──
+  // 👈 ADICIONADO: O "ouvinte" que conecta o backend ao slider
+  useWSChannel<any>('/ws/climate', {
+    reconnectMs: 5000,
+    onMessage: (data) => {
+      console.log("[Climate WS] Recebido:", data); 
+      if (data.type === 'climate_update' && data.state) {
+        useNexus.getState().setHumidity(data.state.humidity);
+      }
+    },
+    onError: () => setClimateWsFailed(true)
+  });
 
   // ── YOLO via WebSocket ──
   useWSChannel<YoloFrame>('/ws/yolo', {

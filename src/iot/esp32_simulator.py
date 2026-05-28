@@ -10,7 +10,7 @@ sobre o hardware real (ESP32 DevKit + sensor capacitivo no GPIO 34).
 
 Uso:
     python esp32_simulator.py
-    python esp32_simulator.py --api python esp32_simulator.py --api https://nexus-sentinel-api-gpk9.onrender.com --interval 5 --sensor-id ESP32-SP-001
+    python esp32_simulator.py --api https://nexus-sentinel-api-gpk9.onrender.com --interval 5 --sensor-id ESP32-SP-001
 """
 from __future__ import annotations
 
@@ -46,7 +46,6 @@ def read_soil_moisture(t: float, baseline: float = 60.0) -> float:
 
 
 def publish(api: str, sensor_id: str, humidity: float, timeout: float = 3.0) -> bool:
-    """Publica leitura no backend via PATCH /api/climate/state."""
     try:
         r = requests.patch(
             f"{api}/api/climate/state",
@@ -54,6 +53,12 @@ def publish(api: str, sensor_id: str, humidity: float, timeout: float = 3.0) -> 
             headers={"X-Device-Id": sensor_id, "X-Device-Type": "esp32-soil"},
             timeout=timeout,
         )
+        
+        # --- ADICIONE ESTAS DUAS LINHAS DE DEBUG AQUI ---
+        if r.status_code != 200:
+            print(f"  [DEBUG] O Render recusou! Status {r.status_code}: {r.text}")
+        # ------------------------------------------------
+            
         return r.status_code == 200
     except requests.RequestException as e:
         print(f"  ✗ erro de rede: {e}")

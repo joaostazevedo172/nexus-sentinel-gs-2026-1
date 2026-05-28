@@ -519,7 +519,7 @@ def build_pdf(output_path: Path) -> None:
 
         Paragraph("5.1. Repositório do Projeto", H2),
         Paragraph(
-            "<b>GitHub:</b> https://github.com/[seu-usuario]/FIAP-GRAD-ON-IA/tree/main/ANO1/FASE1/NEXUS-SENTINEL-GS-2026-1",
+            "<b>GitHub:</b> https://github.com/joaostazevedo172/nexus-sentinel-gs-2026-1",
             BODY,
         ),
         Paragraph(
@@ -547,6 +547,14 @@ def build_pdf(output_path: Path) -> None:
             "• FastAPI + SQLModel — https://sqlmodel.tiangolo.com/",
             BODY,
         ),
+        
+        Paragraph("5.4. Sistema em Produção", H2),
+        Paragraph(
+            "<b>App ao vivo:</b> https://nexus-sentinel-gs-2026-1.vercel.app<br/>"
+            "<b>API:</b> https://nexus-sentinel-api-gpk9.onrender.com<br/>"
+            "<b>API Docs (Swagger):</b> https://nexus-sentinel-api-gpk9.onrender.com/docs",
+            BODY,
+),
 
         Spacer(1, 1 * cm),
         hr(),

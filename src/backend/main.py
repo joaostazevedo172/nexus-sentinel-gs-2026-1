@@ -72,7 +72,7 @@ app.add_middleware(
 )
 
 
-@app.get("/health", tags=["meta"])
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["meta"])
 def health() -> dict:
     """Detailed health check — used by Render/Vercel/uptime monitors.
 

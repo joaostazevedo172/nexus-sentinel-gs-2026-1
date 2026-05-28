@@ -1,3 +1,11 @@
+# FIAP - Faculdade de Informática e Administração Paulista
+
+<p align="center">
+<a href= "https://www.fiap.com.br/"><img src="https://tse2.mm.bing.net/th/id/OIP.3xs_MSeNC0T1UOrJaCEqWAHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="FIAP - Faculdade de Informática e Admnistração Paulista" border="0" width=40% height=40%></a>
+</p>
+
+<br>
+
 # 🛰️ Nexus Sentinel — Gêmeo Digital de Resiliência Climática
 
 > **Global Solution 2026.1 — FIAP**
@@ -11,15 +19,11 @@
 
 ## 👥 Integrantes
 
-| Nome | RM | GitHub |
-|------|----|----|
-| [Nome completo 1] | [00000] | [@usuario1](https://github.com/usuario1) |
-| [Nome completo 2] | [00000] | [@usuario2](https://github.com/usuario2) |
-| [Nome completo 3] | [00000] | [@usuario3](https://github.com/usuario3) |
-| [Nome completo 4] | [00000] | [@usuario4](https://github.com/usuario4) |
-| [Nome completo 5] | [00000] | [@usuario5](https://github.com/usuario5) |
-
-> ⚠ **Substituir pelos nomes reais e RMs antes do commit final.**
+| Nome | RM |
+|------|----|
+| Miriã Leal Mantovani | RM567811 |
+| João Pedro Santos Azevedo | RM566701 |
+| Rodrigo de Souza Freitas | RM567100 | 
 
 ---
 
@@ -107,8 +111,6 @@ NEXUS-SENTINEL-GS-2026-1/
 │   ├── arq-federated-learning.png    ← padrão federado
 │   ├── arquitetura.md                ← versão Mermaid dos diagramas
 │   └── render_diagrams.py            ← gerador dos diagramas
-├── video/
-│   └── roteiro.md                    ← roteiro do vídeo de 5 min
 └── src/
     ├── frontend/                     # Next.js 15 + TS + Tailwind + Framer Motion + Three.js + Zustand
     ├── backend/                      # FastAPI + SQLModel + WebSockets + scikit-learn + boto3
@@ -150,10 +152,6 @@ NEXUS-SENTINEL-GS-2026-1/
 
 🔗 **YouTube (Não Listado):** https://youtu.be/[ID-DO-VIDEO]
 
-> Substituir pelo ID real após upload.
-
-Roteiro completo em [`video/roteiro.md`](./video/roteiro.md).
-
 ---
 
 ## 📄 PDF de Entrega
@@ -182,14 +180,20 @@ Para hospedar o sistema em produção (Vercel + Render, **gratuito**), siga o gu
 - ⏱️ **Tempo total de deploy:** ~15 minutos
 
 URLs públicas (preencher após deploy):
-- App: `https://nexus-sentinel.vercel.app` (substituir)
-- API: `https://nexus-sentinel-api.onrender.com` (substituir)
-- API Health: `https://nexus-sentinel-api.onrender.com/health`
-- API Docs: `https://nexus-sentinel-api.onrender.com/docs`
+- App: `nexus-sentinel-gs-2026-1.vercel.app` (substituir)
+- API: `https://nexus-sentinel-api-gpk9.onrender.com` (substituir)
+- API Health: `https://nexus-sentinel-api-gpk9.onrender.com/health`
+- API Docs: `https://nexus-sentinel-api-gpk9.onrender.com/docs`
 
-## ⚖️ Licença
+## 📜 Licença
 
-Este projeto está licenciado sob a Creative Commons Attribution 4.0 International ([CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)), seguindo o modelo FIAP.
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/agodoi/template">MODELO GIT FIAP</a> por <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a> está licenciado sob <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+
+---
+
+## 🙏 Agradecimentos
+
+Às tutoras **Sabrina Otoni** e **Ana Cristina dos Santos** pelo acompanhamento durante o desenvolvimento das fases. Os feedbacks construtivos foram essenciais para a evolução técnica do projeto.
 
 ---
 

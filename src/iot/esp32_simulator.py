@@ -10,7 +10,7 @@ sobre o hardware real (ESP32 DevKit + sensor capacitivo no GPIO 34).
 
 Uso:
     python esp32_simulator.py
-    python esp32_simulator.py --api python esp32_simulator.py --api https://nexus-sentinel-api-gpk9.onrender.com --interval 5 --interval 5 --sensor-id ESP32-SP-001
+    python esp32_simulator.py --api python esp32_simulator.py --api https://nexus-sentinel-api-gpk9.onrender.com --interval 5 --sensor-id ESP32-SP-001
 """
 from __future__ import annotations
 

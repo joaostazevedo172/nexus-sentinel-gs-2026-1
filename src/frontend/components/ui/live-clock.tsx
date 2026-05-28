@@ -3,15 +3,21 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Live UTC clock — starts with placeholder to avoid SSR/CSR hydration mismatch,
- * then updates every second after mount.
+ * Live clock — horário de Brasília (BRT/BRST).
+ * Começa com placeholder pra evitar SSR/CSR hydration mismatch.
  */
 export function LiveClock() {
-  const [text, setText] = useState('—— —— —— UTC');
+  const [text, setText] = useState('—— ——:——:—— BRT');
 
   useEffect(() => {
-    const update = () =>
-      setText(new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC');
+    const update = () => {
+      const now = new Date().toLocaleString('sv-SE', {
+        timeZone: 'America/Sao_Paulo',
+        hour12: false,
+      });
+      // "sv-SE" garante formato "YYYY-MM-DD HH:MM:SS"
+      setText(now + ' BRT');
+    };
     update();
     const id = setInterval(update, 1000);
     return () => clearInterval(id);

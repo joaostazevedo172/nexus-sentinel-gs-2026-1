@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Nexus Sentinel — funções serverless complementares ao backend FastAPI.
+
+  - PredictWaterScarcity: edge inference do scikit-learn LinearRegression.
+  - GenerateBriefing: Amazon Bedrock (Claude 3.5 Sonnet) → executive briefing.
+
+Globals:
+  Function:
+    Timeout: 15
+    MemorySize: 1024
+    Runtime: python3.11
+    Environment:
+      Variables:
+        CORS_ORIGIN: "*"
+
+Resources:
+  PredictWaterScarcityFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: nexus-predict-water-scarcity
+      CodeUri: lambda_predict/
+      Handler: lambda_function.lambda_handler
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /predict/water-scarcity
+            Method: GET
+
+  GenerateBriefingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: nexus-generate-briefing
+      CodeUri: lambda_briefing/
+      Handler: lambda_function.lambda_handler
+      Timeout: 30
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: arn:aws:bedrock:*::foundation-model/anthropic.claude-3-5-sonnet-*
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /briefing/generate
+            Method: POST
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"

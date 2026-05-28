@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: nexus-sentinel-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./src/backend/Dockerfile
+    dockerContext: ./src/backend
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false              # vou colar a URL do Neon manualmente
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:3000   # ajusto depois com a URL real da Vercel
+      - key: PORT
+        value: 8000

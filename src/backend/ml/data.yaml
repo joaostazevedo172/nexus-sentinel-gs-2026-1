@@ -1,0 +1,14 @@
+# YOLOv8 dataset config for Nexus Sentinel soil monitoring
+path: ./data
+train: images/train
+val: images/val
+
+# Classes (mirror what services/yolo_service.py expects)
+names:
+  0: plantio_cobertura
+  1: area_degradada
+  2: solo_regenerado
+  3: erosao_avancada
+
+# Mapping to UI display labels + kind ("good" | "bad")
+# Used by yolo_service.py at inference time

@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nexus-bg-deep:    #050608;
+  --nexus-bg:         #0A0C10;
+  --nexus-bg-elev:    #0F1218;
+  --nexus-surface:    rgba(255, 255, 255, 0.04);
+  --nexus-border:     rgba(255, 255, 255, 0.08);
+  --nexus-fg:         #EDEDEF;
+  --nexus-fg-muted:   #8A8F98;
+  --nexus-fg-dim:     #545863;
+  --nexus-cyan:       #00F2FF;
+  --nexus-cyan-glow:  rgba(0, 242, 255, 0.18);
+  --nexus-amber:      #FFB800;
+  --nexus-amber-glow: rgba(255, 184, 0, 0.18);
+  --nexus-magenta:    #FF007A;
+  --nexus-magenta-glow: rgba(255, 0, 122, 0.18);
+  --nexus-easing:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--nexus-bg-deep);
+  color: var(--nexus-fg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.nexus-bg-gradient {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,242,255,0.06), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(255,0,122,0.05), transparent 60%),
+    linear-gradient(180deg, #0A0C10 0%, #050608 100%);
+}
+.nexus-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 90%);
+}
+.nexus-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+.nexus-card {
+  background: linear-gradient(180deg, rgba(15,18,24,0.85), rgba(10,12,16,0.75));
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid var(--nexus-border);
+  border-radius: 16px;
+}
+.nexus-glass {
+  background: linear-gradient(180deg, rgba(15,18,24,0.65), rgba(10,12,16,0.55));
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  border: 1px solid var(--nexus-border);
+}
+
+.hud-brackets::before,
+.hud-brackets::after,
+.hud-brackets > .br-tl,
+.hud-brackets > .br-bl {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  border-color: var(--nexus-cyan);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.hud-brackets::before { top: 10px; right: 10px; border-top-width: 1px; border-right-width: 1px; }
+.hud-brackets::after  { bottom: 10px; right: 10px; border-bottom-width: 1px; border-right-width: 1px; }
+.hud-brackets > .br-tl { top: 10px; left: 10px; border-top-width: 1px; border-left-width: 1px; }
+.hud-brackets > .br-bl { bottom: 10px; left: 10px; border-bottom-width: 1px; border-left-width: 1px; }
+
+@keyframes scan {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+.scan-line {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nexus-cyan) 50%, transparent);
+  box-shadow: 0 0 12px var(--nexus-cyan), 0 0 4px var(--nexus-cyan);
+  animation: scan 8s var(--nexus-easing) infinite;
+  pointer-events: none;
+}
+.glow-cyan    { text-shadow: 0 0 12px var(--nexus-cyan-glow); }
+.glow-amber   { text-shadow: 0 0 12px var(--nexus-amber-glow); }
+.glow-magenta { text-shadow: 0 0 12px var(--nexus-magenta-glow); }
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0;   }
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+@keyframes flicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 95% { opacity: 0.6; } }
+.ticker-flicker { animation: flicker 6s steps(1) infinite; }
+
+.micro-bar {
+  background: linear-gradient(180deg, var(--nexus-cyan), rgba(0,242,255,0.3));
+  box-shadow: 0 0 8px var(--nexus-cyan-glow);
+}
+
+input[type=range].nexus-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 18px;
+  background: transparent; outline: none; cursor: pointer;
+}
+input[type=range].nexus-slider::-webkit-slider-runnable-track { height: 2px; background: rgba(255,255,255,0.08); }
+input[type=range].nexus-slider::-moz-range-track { height: 2px; background: rgba(255,255,255,0.08); }
+input[type=range].nexus-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px;
+  background: var(--nexus-cyan);
+  border: 2px solid var(--nexus-bg);
+  box-shadow: 0 0 12px var(--nexus-cyan-glow);
+  border-radius: 50%; margin-top: -6px; cursor: grab;
+  transition: transform 0.15s ease;
+}
+input[type=range].nexus-slider:active::-webkit-slider-thumb { transform: scale(1.15); cursor: grabbing; }
+input[type=range].nexus-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  background: var(--nexus-cyan);
+  border: 2px solid var(--nexus-bg);
+  box-shadow: 0 0 12px var(--nexus-cyan-glow);
+  border-radius: 50%; cursor: grab;
+}
+input[type=range].nexus-slider.is-critical::-webkit-slider-thumb {
+  background: var(--nexus-magenta); box-shadow: 0 0 12px var(--nexus-magenta-glow);
+}
+input[type=range].nexus-slider.is-warning::-webkit-slider-thumb {
+  background: var(--nexus-amber); box-shadow: 0 0 12px var(--nexus-amber-glow);
+}
+
+.terminal {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 11px; line-height: 1.65; color: #c2c8d0;
+}
+.terminal .tx-hash { color: var(--nexus-cyan); }
+.terminal .tx-reward { color: var(--nexus-amber); }
+.terminal .tx-region { color: #fff; }
+.terminal .tx-time { color: var(--nexus-fg-dim); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.16); border-radius: 3px; }

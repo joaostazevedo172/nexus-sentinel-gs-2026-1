@@ -1,0 +1,15 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+.venv
+venv
+.env
+.env.local
+.pytest_cache
+nexus.db
+nexus.db-journal
+ml/data
+ml/runs
+*.md
+.DS_Store

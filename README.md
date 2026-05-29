@@ -150,7 +150,7 @@ NEXUS-SENTINEL-GS-2026-1/
 
 ## 🎬 Vídeo Demonstrativo
 
-🔗 **YouTube (Não Listado):** https://youtu.be/[ID-DO-VIDEO]
+🔗 **YouTube (Não Listado):** https://www.youtube.com/watch?v=6E_TyXsCIsI
 
 ---
 

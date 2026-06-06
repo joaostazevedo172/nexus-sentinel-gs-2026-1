@@ -17,13 +17,19 @@
 
 ---
 
-## 👥 Integrantes — Grupo Nexus
+## 👥 Grupo Nexus — Integrantes
 
 | Nome | RM |
 |------|----|
 | Miriã Leal Mantovani | RM567811 |
 | João Pedro Santos Azevedo | RM566701 |
 | Rodrigo de Souza Freitas | RM567100 |
+
+---
+
+<p align="center">
+<b style="color: #FF007A; font-size: 1.5em;">⭐ QUERO CONCORRER ⭐</b>
+</p>
 
 ---
 

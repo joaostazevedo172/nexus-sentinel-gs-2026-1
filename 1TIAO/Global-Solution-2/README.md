@@ -156,7 +156,7 @@ NEXUS-SENTINEL-GS-2026-1/
 
 ## 📄 PDF de Entrega
 
-O PDF da entrega está em [`docs/nexus-sentinel-gs-2026-1.pdf`](./docs/nexus-sentinel-gs-2026-1.pdf) (15 páginas, gerado automaticamente via reportlab).
+O PDF da entrega está em [`1TIAO/Global-Solution-2/docs/nexus-sentinel-gs-26-1.pdf`](./docs/nexus-sentinel-gs-26-1.pdf) (15 páginas, gerado automaticamente via reportlab).
 
 Para regenerar:
 ```bash
